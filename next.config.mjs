@@ -8,7 +8,15 @@ const nextConfig = {
   //   ignoreBuildErrors: true,
   // },
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'wbnrjcpywhmxymiyafjg.supabase.co',
+        port: '',
+        pathname: '/storage/v1/object/public/authors/**',
+        search: '',
+      },
+    ],
   },
   // experimental: {
   //   webpackBuildWorker: true,

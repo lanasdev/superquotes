@@ -2,14 +2,15 @@
 
 import Link from 'next/link'
 import { useAuth } from '@/app/contexts/AuthContext'
-import { User, LogIn, Book, LogOut } from 'lucide-react'
+import { User, LogIn, Book, LogOut, Quote as QuoteIcon } from 'lucide-react'
+import SectionContainer from '@/components/SectionContainer'
 
 export default function Navbar() {
   const { user, signOut } = useAuth()
 
   return (
     <nav className="bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SectionContainer>
         <div className="flex justify-between h-16">
           <div className="flex">
             <Link href="/" className="flex-shrink-0 flex items-center">
@@ -19,6 +20,10 @@ export default function Navbar() {
               <Link href="/authors" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700">
                 <Book className="h-5 w-5 mr-1" />
                 Authors
+              </Link>
+              <Link href="/q" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700">
+                <QuoteIcon className="h-5 w-5 mr-1" />
+                Quotes
               </Link>
             </div>
           </div>
@@ -45,7 +50,7 @@ export default function Navbar() {
             )}
           </div>
         </div>
-      </div>
+      </SectionContainer>
     </nav>
   )
 }

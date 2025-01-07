@@ -1,11 +1,13 @@
 import { supabase } from './supabase'
 
 export interface Quote {
-  author_slug: string
+  author_slug: string | null
   id: number
   text: string
   author: string
-  created_at: string
+  created_at: string | null
+  author_name?: string
+  uuid?: string
 }
 
 export async function getQuotes(): Promise<Quote[]> {
@@ -53,4 +55,22 @@ export async function getQuotesForHome(): Promise<Quote[]> {
     author: quote.authors?.name || 'Unknown Author',
     author_slug: quote.author_slug
   }))
+}
+
+export async function getQuoteById(id: string): Promise<Quote | null> {
+  const { data, error } = await supabase
+    .from('quotes')
+    .select('*, authors(name)')
+    .eq('id', id)
+    .single()
+
+  if (error) {
+    console.error('Error fetching quote:', error)
+    return null
+  }
+
+  return {
+    ...data,
+    author_name: data.authors?.name || 'Unknown Author',
+  }
 }

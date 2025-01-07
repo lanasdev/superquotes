@@ -1,8 +1,9 @@
 import Link from 'next/link'
- 
+import SectionContainer from '@/components/SectionContainer'
+
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+    <SectionContainer className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
       <div className="text-center p-8 rounded-lg shadow-lg bg-white">
         <h2 className="text-4xl font-bold text-gray-800 mb-4">Not Found</h2>
         <p className="text-gray-600 text-lg mb-6">Could not find requested resource</p>
@@ -13,6 +14,6 @@ export default function NotFound() {
           Return Home
         </Link>
       </div>
-    </div>
+    </SectionContainer>
   )
 }

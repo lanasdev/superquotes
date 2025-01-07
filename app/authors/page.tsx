@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import { getAuthors } from "@/lib/authors"
+import SectionContainer from "@/components/SectionContainer"
 
 export default async function AuthorsPage() {
   const authors = await getAuthors()
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <SectionContainer className="py-8">
       <h1 className="text-3xl font-bold mb-6">Authors</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {authors.map((author) => (
@@ -19,7 +20,7 @@ export default async function AuthorsPage() {
           </Link>
         ))}
       </div>
-    </div>
+    </SectionContainer>
   )
 }
 
