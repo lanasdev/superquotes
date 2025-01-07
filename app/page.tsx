@@ -1,8 +1,6 @@
 import QuoteList from "../components/QuoteList";
 import QuoteForm from "../components/QuoteForm";
-import LoginForm from "../components/LoginForm";
 import SectionContainer from "@/components/SectionContainer";
-import { Card, CardContent } from "@/components/ui/card";
 
 export default function Home() {
   return (

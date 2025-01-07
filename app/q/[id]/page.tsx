@@ -8,11 +8,11 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
 export default async function QuotePage({
-  params,
+    params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
-  const quote = await getQuoteById(params.id)
+  const quote = await getQuoteById((await params).id)
 
   if (!quote) {
     notFound()

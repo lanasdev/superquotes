@@ -2,11 +2,9 @@
 
 import { useState } from 'react'
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { uploadAuthorImage } from '@/lib/authors'
-import { ImagePlus, Loader2 } from 'lucide-react'
+import { Loader2 } from 'lucide-react'
 import { useToast } from "@/components/ui/use-toast"
 import { useAuth } from '@/app/contexts/AuthContext'
 

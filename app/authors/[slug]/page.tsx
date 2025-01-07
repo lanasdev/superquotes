@@ -1,12 +1,10 @@
 import { notFound } from 'next/navigation'
 import { getAuthorBySlug, getAuthorImageUrl, getAuthors, getQuotesByAuthorSlug } from '@/lib/authors'
 import Quote from '../../../components/Quote'
-import { Suspense } from 'react'
 import SectionContainer from '@/components/SectionContainer'
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import AuthorImageUpload from '@/components/AuthorImageUpload'
 import Image from 'next/image'
-import { supabase } from '@/lib/supabase'
 
 export const revalidate = 10
 
@@ -23,10 +21,9 @@ export default async function AuthorPage({
     notFound()
   }
 
-  console.log(author)
 
   const ImageUrl = author.slug ? await getAuthorImageUrl(author.slug) : null
-  console.log(ImageUrl)
+  // console.log(ImageUrl)
 
 
   return (

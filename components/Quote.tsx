@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"
-import { getAuthorImageUrl } from '@/lib/authors'
 
 interface QuoteProps {
   text: string

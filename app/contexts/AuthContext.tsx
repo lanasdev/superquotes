@@ -1,14 +1,14 @@
 'use client'
 
 import React, { createContext, useState, useEffect, useContext } from 'react'
-import { User } from '@supabase/supabase-js'
+import { User, Provider } from '@supabase/supabase-js'
 import { supabase } from '../../lib/supabase'
 
 interface AuthContextType {
   user: User | null
   signIn: (email: string, password: string) => Promise<void>
   signOut: () => Promise<void>
-  signInWithProvider: (provider: string) => Promise<void>
+  signInWithProvider: (provider: Provider) => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -37,7 +37,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     if (error) throw error
   }
 
-  const signInWithProvider = async (provider: string) => {
+  const signInWithProvider = async (provider: Provider) => {
     const { error } = await supabase.auth.signInWithOAuth({ provider })
     if (error) throw error
   }

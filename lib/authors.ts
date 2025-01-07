@@ -125,17 +125,17 @@ export async function getAuthorImageUrl(
     .single();
 
   if (error || !data) {
-    console.error("Error fetching author image URL:", error);
+    console.error("Fehler beim Abrufen der Autoreninformationen:", error?.message);
     return null;
   }
+
 
   const { data: publicUrlData } = await supabase.storage
     .from("authors")
     .getPublicUrl(data.image_url);
 
-    
   if (!publicUrlData?.publicUrl) {
-    console.error("Could not get public URL");
+    console.error("Fehler beim Abrufen der öffentlichen URL.");
     return null;
   }
 
