@@ -11,23 +11,29 @@ export type Database = {
     Tables: {
       authors: {
         Row: {
+          avatar: string | null
           bio: string | null
           created_at: string | null
           id: number
+          image_url: string | null
           name: string
           slug: string
         }
         Insert: {
+          avatar?: string | null
           bio?: string | null
           created_at?: string | null
           id?: number
+          image_url?: string | null
           name: string
           slug?: string
         }
         Update: {
+          avatar?: string | null
           bio?: string | null
           created_at?: string | null
           id?: number
+          image_url?: string | null
           name?: string
           slug?: string
         }
@@ -35,7 +41,7 @@ export type Database = {
       }
       quotes: {
         Row: {
-          author: string
+          author: string | null
           author_slug: string | null
           created_at: string | null
           id: number
@@ -43,7 +49,7 @@ export type Database = {
           uuid: string
         }
         Insert: {
-          author: string
+          author?: string | null
           author_slug?: string | null
           created_at?: string | null
           id?: number
@@ -51,7 +57,7 @@ export type Database = {
           uuid?: string
         }
         Update: {
-          author?: string
+          author?: string | null
           author_slug?: string | null
           created_at?: string | null
           id?: number

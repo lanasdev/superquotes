@@ -1,8 +1,27 @@
 import QuoteList from "../components/QuoteList";
-import QuoteForm from "../components/QuoteForm";
 import SectionContainer from "@/components/SectionContainer";
+import { SubmitQuoteForm } from "@/components/submit-quote-form";
+import { getAuthorImageUrl } from "@/lib/authors";
+import { supabase } from "@/lib/supabase";
 
-export default function Home() {
+export default async function Home() {
+  const { data: authors, error } = await supabase
+  .from('authors')
+  .select("*")
+  .order('slug')
+
+if (error) {
+  console.error('Error fetching authors:', error)
+  return <div>Error loading authors</div>
+}
+
+const authorsWithImages = await Promise.all(
+  authors.map(async (author) => ({
+    ...author,
+    author_image: author.slug ? await getAuthorImageUrl(author.slug) : null
+  }))
+)
+
   return (
     <SectionContainer className="py-8">
       <div className="flex flex-col items-center mb-8">
@@ -16,7 +35,7 @@ export default function Home() {
       </div>
 
       <div className="max-w-2xl mx-auto space-y-8">
-        <QuoteForm />
+      <SubmitQuoteForm authors={authorsWithImages} />
 
         <div className="space-y-6">
           <QuoteList />
