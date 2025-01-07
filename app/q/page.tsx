@@ -5,10 +5,18 @@ import QuoteComponent from "@/components/Quote";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { getAuthorImageUrl } from "@/lib/authors";
 
 export default async function QuotesPage() {
-  const quotes = await getQuotes();
+  const quotes = await getQuotes()
 
+  // Hole die Autor-Bilder
+  const quotesWithImages = await Promise.all(
+    quotes.map(async (quote) => ({
+      ...quote,
+      author_image: quote.author_slug ? await getAuthorImageUrl(quote.author_slug) : null
+    }))
+  )
   return (
     <SectionContainer className="py-8">
       <div className="flex flex-col items-center mb-8">
@@ -28,6 +36,7 @@ export default async function QuotesPage() {
                 text={quote.text}
                 author={quote.author}
                 author_slug={quote.author_slug || ""}
+                author_image={quote.author_image}
               />
             </CardContent>
             <CardFooter className="justify-end py-4 border-t">

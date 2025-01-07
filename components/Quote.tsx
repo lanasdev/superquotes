@@ -15,7 +15,7 @@ export default function Quote({ text, author, author_slug, author_image }: Quote
       <div className="mt-4 flex items-center gap-3">
         <Avatar className="h-8 w-8">
           <AvatarImage src={author_image || undefined} alt={author} />
-          <AvatarFallback>{author.charAt(0)}</AvatarFallback>
+          <AvatarFallback>{author?.charAt(0)}</AvatarFallback>
         </Avatar>
         {author_slug ? (
           <Link href={`/authors/${author_slug}`} className="text-sm text-indigo-600 hover:text-indigo-800">

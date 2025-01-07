@@ -23,7 +23,7 @@ A modern web application for sharing and discovering quotes.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/superquotes.git
+   git clone https://github.com/lanasdev/superquotes.git
    cd superquotes
    ```
 
