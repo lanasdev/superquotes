@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useAuth } from "../contexts/AuthContext";
 import { supabase } from "../../lib/supabase";
 import SectionContainer from "@/components/SectionContainer";
+import { GithubIcon, XIcon } from "@/lib/Icons";
+import { Button } from "@/components/ui/button";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -135,13 +137,24 @@ export default function LoginPage() {
 
           <div className="mt-6">
             <hr className="py-4"/>
-            <button
-              onClick={() => signInWithProvider('twitter')}
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-700"
-            >
-              <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>X</title><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg>
-              Sign in with X
-            </button>
+            <div className="flex gap-4">
+              <Button
+                onClick={() => signInWithProvider('twitter')}
+                variant="secondary"
+                className="w-full flex justify-center"
+              >
+                <XIcon />
+                Sign in with X
+              </Button>
+              <Button
+                onClick={() => signInWithProvider('github')}
+                variant="secondary"
+                className="w-full flex justify-center py-2 px-4 "
+              >
+                <GithubIcon />
+                Sign in with Github
+              </Button>
+            </div>
           </div>
         </div>
       </div>
