@@ -1,12 +1,19 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { useAuth } from '@/app/contexts/AuthContext'
-import { User, LogIn, Book, LogOut, Quote as QuoteIcon } from 'lucide-react'
-import SectionContainer from '@/components/SectionContainer'
+import Link from "next/link";
+import { useAuth } from "@/app/contexts/AuthContext";
+import {
+  User,
+  LogIn,
+  Book,
+  LogOut,
+  Quote as QuoteIcon,
+  DicesIcon,
+} from "lucide-react";
+import SectionContainer from "@/components/SectionContainer";
 
 export default function Navbar() {
-  const { user, signOut } = useAuth()
+  const { user, signOut } = useAuth();
 
   return (
     <nav className="bg-white shadow-md">
@@ -14,16 +21,32 @@ export default function Navbar() {
         <div className="flex justify-between h-16">
           <div className="flex">
             <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="text-xl font-bold text-indigo-600">Superquotes</span>
+              <span className="text-xl font-bold text-indigo-600">
+                Superquotes
+              </span>
             </Link>
             <div className="ml-6 flex space-x-8">
-              <Link href="/authors" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700">
+              <Link
+                href="/q"
+                className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700"
+              >
+                <QuoteIcon className="h-5 w-5 mr-1" />
+                Quotes
+              </Link>
+              <Link
+                href="/authors"
+                className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700"
+              >
                 <Book className="h-5 w-5 mr-1" />
                 Authors
               </Link>
-              <Link href="/q" className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700">
-                <QuoteIcon className="h-5 w-5 mr-1" />
-                Quotes
+
+              <Link
+                href="/random"
+                className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700"
+              >
+                <DicesIcon className="h-5 w-5 mr-1" />
+                Random
               </Link>
             </div>
           </div>
@@ -43,7 +66,10 @@ export default function Navbar() {
                 </button>
               </div>
             ) : (
-              <Link href="/login" className="flex items-center text-gray-700 hover:text-indigo-600">
+              <Link
+                href="/login"
+                className="flex items-center text-gray-700 hover:text-indigo-600"
+              >
                 <LogIn className="h-5 w-5 mr-1" />
                 <span>Login</span>
               </Link>
@@ -52,5 +78,5 @@ export default function Navbar() {
         </div>
       </SectionContainer>
     </nav>
-  )
+  );
 }
